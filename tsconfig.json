@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "target": "ES6",
+    "module": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "removeComments": true,
+    "jsx": "react",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/DmitryDorofeev/redux-popup/issues"
   },
-  "homepage": "https://github.com/DmitryDorofeev/redux-popup#readme"
+  "homepage": "https://github.com/DmitryDorofeev/redux-popup#readme",
+  "devDependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "redux": "^3.6.0"
+  }
 }
