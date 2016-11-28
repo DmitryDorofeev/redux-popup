@@ -1,3 +1,5 @@
-import ireducer from './reducer';
-
-export const reducer = ireducer;
+import reducer from './reducer';
+export {createReduxPopup} from './createReduxPopup';
+export * from './actions';
+export * from './ReduxPopup';
+export const popupReducer = reducer;
