@@ -1,4 +1,4 @@
-import {OPEN_POPUP, CLOSE_POPUP, REGISTER_POPUP} from "./constants";
+import {OPEN_POPUP, CLOSE_POPUP, REGISTER_POPUP, CLOSE_ALL_POPUPS} from "./constants";
 
 export interface Action<T> {
     type: string;
@@ -26,6 +26,14 @@ export function closeActivePopup(): Action<void> {
         payload: null,
     }
 }
+
+export function closeAllPopups(): Action<void> {
+    return {
+        type: CLOSE_ALL_POPUPS,
+        payload: null,
+    }
+}
+
 
 export function registerPopup(name: string): Action<string> {
     return {

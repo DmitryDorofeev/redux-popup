@@ -1,5 +1,5 @@
 import {Action} from "./actions";
-import {OPEN_POPUP, CLOSE_POPUP, REGISTER_POPUP} from "./constants";
+import {OPEN_POPUP, CLOSE_POPUP, REGISTER_POPUP, CLOSE_ALL_POPUPS} from "./constants";
 import {combineReducers} from "redux";
 
 const popups = (state = [], action: Action<any>): any => {
@@ -17,6 +17,8 @@ const sequence = (state = [], action: Action<any>) => {
             return [...state, action.payload];
         case CLOSE_POPUP:
             return state.slice(0, -1);
+        case CLOSE_ALL_POPUPS:
+            return [];
         default:
             return state;
     }

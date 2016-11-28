@@ -10,7 +10,7 @@ interface IOwnPeduxPopupProps {
     overlayClassName?: string;
 }
 
-interface IReduxPopupProps extends IOwnPeduxPopupProps {
+export interface IReduxPopupProps extends IOwnPeduxPopupProps {
     closeActivePopup();
     registerPopup(name: string);
     popup: any;

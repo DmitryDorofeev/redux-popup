@@ -16,6 +16,7 @@
   "bugs": {
     "url": "https://github.com/DmitryDorofeev/redux-popup/issues"
   },
+  "types": "index.d.ts",
   "homepage": "https://github.com/DmitryDorofeev/redux-popup#readme",
   "devDependencies": {
     "@types/node": "^6.0.51",
