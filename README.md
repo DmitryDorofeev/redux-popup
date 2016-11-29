@@ -1,6 +1,8 @@
 # redux-popup
 
-Redux wrapper for react-modal
+Redux wrapper for modals
+
+Uses Dialog from [react-toolbox](http://react-toolbox.com/)
 
 ## Usage
 
@@ -13,13 +15,22 @@ class Popup extends Component {
     
     render() {
         return (
-            <ReduxPopup name="test">
+            <div>
                 <h1>My popup</h1>
-            </ReduxPopup>
+            </div>
         )
     }
     
 }
+
+class OtherComponentOrContainer extends Component {
+    render() {
+            return (
+                <ReduxPopup name="test" component={Popup}/>
+            )
+        }
+}
+
 ```
 
 ### As function

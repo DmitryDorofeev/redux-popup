@@ -14,12 +14,12 @@ const store =
 class PopupInner extends React.Component {
     render() {
         return (
-            <div>bababa</div>
+            <div>{this.props.param}</div>
         )
     }
 }
 
-const Popup = createReduxPopup('test')(PopupInner);
+const Popup = createReduxPopup('test', { param: 'hello!' })(PopupInner);
 
 let render = () => {
     ReactDOM.render(

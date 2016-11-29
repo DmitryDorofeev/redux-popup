@@ -2,6 +2,8 @@ declare module 'redux-popup' {
 
     export interface IOwnPeduxPopupProps {
         name: string;
+        component: React.ComponentClass<any>;
+        data?: any;
         shouldCloseOnOverlayClick?: boolean;
         className?: string;
         overlayClassName?: string;

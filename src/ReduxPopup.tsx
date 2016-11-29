@@ -2,9 +2,12 @@ import React, {Component} from "react";
 import Dialog from 'react-toolbox/lib/dialog/Dialog';
 import {connect} from 'react-redux';
 import {registerPopup, closeActivePopup} from "./actions";
+import ComponentClass = React.ComponentClass;
 
 export interface IOwnPeduxPopupProps {
     name: string;
+    component: ComponentClass<any>;
+    data: any;
     shouldCloseOnOverlayClick?: boolean;
     className?: string;
     overlayClassName?: string;
@@ -32,8 +35,11 @@ class ReduxPopup extends Component<IReduxPopupProps, void> {
     }
 
     render() {
-        const {children, popup: {sequence}, name, className, type} = this.props;
+        const {component: Inner, popup: {sequence}, name, className, type} = this.props;
         const active = sequence[sequence.length - 1];
+        const dialogData = sequence.filter(dialog => dialog.name === name)[0];
+        const data = dialogData ? dialogData.data : {};
+
         return (
             <Dialog
                 active={active && (active.name === name) || false}
@@ -42,7 +48,7 @@ class ReduxPopup extends Component<IReduxPopupProps, void> {
                 theme={className ? { dialog: className } : null}
                 type={type}
             >
-                {children}
+                <Inner {...data}/>
             </Dialog>
         );
     }
