@@ -8,7 +8,7 @@ Uses Dialog from [react-toolbox](http://react-toolbox.com/)
 
 ### As component
 
-```jsx harmony
+```js
 import {ReduxPopup} from 'redux-popup';
 
 class Popup extends Component {
@@ -35,7 +35,7 @@ class OtherComponentOrContainer extends Component {
 
 ### As function
 
-```jsx harmony
+```js
 import {createReduxPopup} from 'redux-popup';
 
 class Popup extends Component {
