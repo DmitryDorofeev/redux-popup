@@ -5,12 +5,14 @@ export interface Action<T> {
     payload: T;
 }
 
+export type PopupName = string | number;
+
 export interface IOpenPopupActionPayload {
-    name: string;
+    name: PopupName;
     data: any;
 }
 
-export function openPopup(name, data): Action<IOpenPopupActionPayload> {
+export function openPopup(name: PopupName, data): Action<IOpenPopupActionPayload> {
     return {
         type: OPEN_POPUP,
         payload: {
@@ -35,7 +37,7 @@ export function closeAllPopups(): Action<void> {
 }
 
 
-export function registerPopup(name: string): Action<string> {
+export function registerPopup(name: PopupName): Action<PopupName> {
     return {
         type: REGISTER_POPUP,
         payload: name,

@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import Dialog from 'react-toolbox/lib/dialog/Dialog';
 import {connect} from 'react-redux';
-import {registerPopup, closeActivePopup} from "./actions";
+import {registerPopup, closeActivePopup, PopupName} from "./actions";
 import ComponentClass = React.ComponentClass;
 
 export interface IOwnPeduxPopupProps {
-    name: string;
+    name: PopupName;
     component: ComponentClass<any>;
     data: any;
     shouldCloseOnOverlayClick?: boolean;
@@ -15,7 +15,7 @@ export interface IOwnPeduxPopupProps {
 
 interface IReduxPopupProps extends IOwnPeduxPopupProps {
     closeActivePopup();
-    registerPopup(name: string);
+    registerPopup(name: PopupName);
     popup: any;
 }
 

@@ -1,7 +1,8 @@
 declare module 'redux-popup' {
+    type PopupName = string | number;
 
     export interface IOwnPeduxPopupProps {
-        name: string;
+        name: PopupName;
         component: React.ComponentClass<any>;
         data?: any;
         shouldCloseOnOverlayClick?: boolean;
@@ -11,16 +12,16 @@ declare module 'redux-popup' {
     }
 
     export interface IReduxPopupItem {
-        name: string;
+        name: PopupName;
         data: any;
     }
 
     export interface IReduxPopupStore {
-        popups: Array<string>;
+        popups: Array<PopupName>;
         sequence: Array<IReduxPopupItem>;
     }
 
-    export function openPopup(name: string, data?: any);
+    export function openPopup(name: PopupName, data?: any);
 
     export function closeActivePopup();
 
@@ -34,5 +35,5 @@ declare module 'redux-popup' {
 
     export const ReduxPopup: React.ComponentClass<IOwnPeduxPopupProps>;
 
-    export function createReduxPopup(name: string, data: any): (component: React.ComponentClass<IOwnPeduxPopupProps>) => React.ComponentClass<IOwnPeduxPopupProps>
+    export function createReduxPopup(name: PopupName, data: any): (component: React.ComponentClass<IOwnPeduxPopupProps>) => React.ComponentClass<IOwnPeduxPopupProps>
 }
