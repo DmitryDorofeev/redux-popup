@@ -10,7 +10,6 @@ export interface IOwnPeduxPopupProps {
     data: any;
     shouldCloseOnOverlayClick?: boolean;
     className?: string;
-    overlayClassName?: string;
     type?: string;
 }
 

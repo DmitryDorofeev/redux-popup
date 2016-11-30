@@ -10,6 +10,16 @@ declare module 'redux-popup' {
         type?: string;
     }
 
+    export interface IReduxPopupItem {
+        name: string;
+        data: any;
+    }
+
+    export interface IReduxPopupStore {
+        popups: Array<string>;
+        sequence: Array<IReduxPopupItem>;
+    }
+
     export function openPopup(name: string, data?: any);
 
     export function closeActivePopup();
