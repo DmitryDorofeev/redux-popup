@@ -34,13 +34,30 @@ module.exports = {
                 exclude: [path.join(__dirname, 'node_modules'), path.join(__dirname, 'examples')],
             },
             { test: /\.json($|\?)/, use: 'json-loader' },
+            { test: /\.scss$/, loader: [
+                {
+                    loader: 'style'
+                },
+                {
+                    loader: 'css',
+                    query: {
+                        modules: true,
+                        camelCase: true,
+                        importLoaders: 1,
+                        localIdentName: '[name]__[local]__[hash:base64:7]',
+                    },
+                },
+                {
+                    loader: 'sass',
+                }
+            ]},
         ]
     },
     resolve: {
         modules: [
             "node_modules",
-            path.resolve(__dirname, 'src')
+            path.resolve(__dirname, 'src'),
         ],
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js', '.scss']
     }
 };

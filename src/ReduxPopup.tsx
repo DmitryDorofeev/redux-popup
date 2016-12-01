@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Dialog from 'react-toolbox/lib/dialog/Dialog';
+import Dialog from 'react-toolbox/lib/dialog';
 import {connect} from 'react-redux';
 import {registerPopup, closeActivePopup, PopupName} from "./actions";
 import ComponentClass = React.ComponentClass;
@@ -43,7 +43,6 @@ class ReduxPopup extends Component<IReduxPopupProps, void> {
             <Dialog
                 active={active && (active.name === name) || false}
                 onEscKeyDown={() => this.onClose()}
-                className={className}
                 theme={className ? { dialog: className } : null}
                 type={type}
             >

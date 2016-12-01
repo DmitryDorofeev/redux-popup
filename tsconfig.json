@@ -9,7 +9,7 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "removeComments": true,
-    "allowJs": true,
+    "allowJs": false,
     "jsx": "react",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
