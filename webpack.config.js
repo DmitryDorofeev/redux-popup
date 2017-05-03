@@ -3,7 +3,7 @@ let webpack = require('webpack');
 
 module.exports = {
     entry: ['./src/index'],
-    devtool: 'eval',
+    devtool: 'hidden-source-map',
     name: 'browser',
     output: {
         path: path.resolve(__dirname, 'lib'),
