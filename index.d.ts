@@ -3,12 +3,14 @@ declare module 'redux-popup' {
 
     export interface IOwnPeduxPopupProps {
         name: PopupName;
-        component: React.ComponentClass<any>;
+        component: React.ComponentClass<any> | React.StatelessComponent<any>;
         data?: any;
         shouldCloseOnOverlayClick?: boolean;
         className?: string;
         overlayClassName?: string;
         type?: string;
+        modal: React.ComponentClass<any>;
+        [key: string]: any;
     }
 
     export interface IReduxPopupItem {

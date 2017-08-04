@@ -1,11 +1,11 @@
-import React from "react";
+import React, {ComponentClass} from "react";
 import ReduxPopup from './ReduxPopup';
 import {PopupName} from './actions';
 
-export function createReduxPopup(name: PopupName, data = {}) {
+export function createReduxPopup(name: PopupName, modal: ComponentClass<any>, modalProps = {}, data = {}) {
     return WrappedComponent => {
         return props => (
-            <ReduxPopup name={name} component={WrappedComponent} data={data}/>
+            <ReduxPopup name={name} component={WrappedComponent} data={data} modal={modal}/>
         );
     }
 }

@@ -1,8 +1,6 @@
-import React, {Component} from "react";
-import Dialog from 'react-toolbox/lib/dialog/Dialog';
+import React, {Component, ComponentClass} from "react";
 import {connect} from 'react-redux';
 import {registerPopup, closeActivePopup, PopupName} from "./actions";
-import ComponentClass = React.ComponentClass;
 
 export interface IOwnPeduxPopupProps {
     name: PopupName;
@@ -11,6 +9,8 @@ export interface IOwnPeduxPopupProps {
     shouldCloseOnOverlayClick?: boolean;
     className?: string;
     type?: string;
+    modal: ComponentClass<any>;
+    [key: string]: any;
 }
 
 interface IReduxPopupProps extends IOwnPeduxPopupProps {
@@ -21,20 +21,12 @@ interface IReduxPopupProps extends IOwnPeduxPopupProps {
 
 class ReduxPopup extends Component<IReduxPopupProps, void> {
 
-    componentWillMount() {
-        this.props.registerPopup(this.props.name);
-    }
-
-    componentWillUnmount() {
-        //todo
-    }
-
     onClose() {
         this.props.closeActivePopup();
     }
 
     render() {
-        const {component: Inner, popup: {sequence}, name, className, type} = this.props;
+        const {component: Inner, modal: Dialog, popup: {sequence}, name, className, type, ...modalProps} = this.props;
         const active = sequence[sequence.length - 1];
         const dialogData = sequence.filter(dialog => dialog.name === name)[0];
         const data = dialogData ? dialogData.data : {};
@@ -42,10 +34,10 @@ class ReduxPopup extends Component<IReduxPopupProps, void> {
         return (
             <Dialog
                 active={active && (active.name === name) || false}
-                onEscKeyDown={() => this.onClose()}
+                onClose={() => this.onClose()}
                 className={className}
-                theme={className ? { dialog: className } : null}
                 type={type}
+                {...modalProps}
             >
                 <Inner {...data}/>
             </Dialog>

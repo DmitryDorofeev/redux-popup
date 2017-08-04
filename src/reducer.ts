@@ -1,17 +1,11 @@
-import {Action} from "./actions";
 import {OPEN_POPUP, CLOSE_POPUP, REGISTER_POPUP, CLOSE_ALL_POPUPS} from "./constants";
-import {combineReducers} from "redux";
+import {combineReducers, Reducer, Action} from "redux";
 
-const popups = (state = [], action: Action<any>): any => {
-    switch (action.type) {
-        case REGISTER_POPUP:
-            return [...state, action.payload];
-        default:
-            return state;
-    }
-};
+export interface IReducer {
+    sequence: any[];
+}
 
-const sequence = (state = [], action: Action<any>) => {
+const sequence: Reducer<any[]> = (state: any[] = [], action: any) => {
     switch (action.type) {
         case OPEN_POPUP:
             return [...state, action.payload];
@@ -24,7 +18,6 @@ const sequence = (state = [], action: Action<any>) => {
     }
 };
 
-export default combineReducers<any>({
+export default combineReducers<IReducer>({
     sequence,
-    popups,
 });
