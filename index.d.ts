@@ -1,7 +1,7 @@
 declare module 'redux-popup' {
     type PopupName = string | number;
 
-    export interface IOwnPeduxPopupProps {
+    export interface IReduxPopupOwnProps {
         name: PopupName;
         component: React.ComponentClass<any> | React.StatelessComponent<any>;
         data?: any;
@@ -10,6 +10,7 @@ declare module 'redux-popup' {
         overlayClassName?: string;
         type?: string;
         modal: React.ComponentClass<any>;
+        popupType?: EReduxPopupType;
         [key: string]: any;
     }
 
@@ -19,7 +20,6 @@ declare module 'redux-popup' {
     }
 
     export interface IReduxPopupStore {
-        popups: Array<PopupName>;
         sequence: Array<IReduxPopupItem>;
     }
 
@@ -29,13 +29,27 @@ declare module 'redux-popup' {
 
     export function closeAllPopups();
 
-    export const OPEN_POPUP: string;
-    export const CLOSE_POPUP: string;
-    export const CLOSE_ALL_POPUPS: string;
+    export function actionDecorator(type: EReduxPopupType);
 
-    export function popupReducer(state: any, action: any)
+    export enum EReduxPopup {
+        REGISTER_POPUP = '@redux-popup/REGISTER',
+        OPEN_POPUP = '@redux-popup/OPEN',
+        CLOSE_POPUP = '@redux-popup/CLOSE',
+        CLOSE_ALL_POPUPS = '@redux-popup/CLOSE_ALL',
+    }
 
-    export const ReduxPopup: React.ComponentClass<IOwnPeduxPopupProps>;
+    export function getPopupConstant(type: EReduxPopupType, constant: EReduxPopup): string;
 
-    export function createReduxPopup(name: PopupName, data: any): (component: React.ComponentClass<IOwnPeduxPopupProps>) => React.ComponentClass<IOwnPeduxPopupProps>
+    export enum EReduxPopupType {
+        POPUP = 'popup',
+        TOAST = 'toast',
+    }
+
+    export function popupReducer(state: any, action: any);
+
+    export function makePopupReducer(type: EReduxPopupType);
+
+    export const ReduxPopup: React.ComponentClass<IReduxPopupOwnProps>;
+
+    export function createReduxPopup(name: PopupName, data: any): (component: React.ComponentClass<IReduxPopupOwnProps>) => React.ComponentClass<IReduxPopupOwnProps>
 }

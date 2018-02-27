@@ -1,8 +1,9 @@
-import React, {Component, ComponentClass} from "react";
+import React, {Component, ComponentClass} from 'react';
 import {connect} from 'react-redux';
-import {registerPopup, closeActivePopup, PopupName} from "./actions";
+import {registerPopup, closeActivePopup, PopupName, actionDecorator} from './actions';
+import {IReduxPopupStore, EReduxPopupType} from './reducer';
 
-export interface IOwnPeduxPopupProps {
+export interface IReduxPopupOwnProps {
     name: PopupName;
     component: ComponentClass<any>;
     data: any;
@@ -10,23 +11,47 @@ export interface IOwnPeduxPopupProps {
     className?: string;
     type?: string;
     modal: ComponentClass<any>;
+    popupType?: EReduxPopupType;
     [key: string]: any;
 }
 
-interface IReduxPopupProps extends IOwnPeduxPopupProps {
-    closeActivePopup();
-    registerPopup(name: PopupName);
-    popup: any;
+type IReduxPopupStateProps = {
+    [key in EReduxPopupType]: IReduxPopupStore;
 }
 
-class ReduxPopup extends Component<IReduxPopupProps, void> {
+interface IReduxPopupDispatchProps {
+    closeActivePopup();
+    registerPopup(name: PopupName);
+}
+
+interface IReduxPopupProps extends IReduxPopupOwnProps,
+    IReduxPopupStateProps, IReduxPopupDispatchProps {
+}
+
+const noop = () => null;
+
+class ReduxPopup extends Component<IReduxPopupProps, null> {
 
     onClose() {
-        this.props.closeActivePopup();
+        const {
+            popupType = EReduxPopupType.POPUP,
+            closeActivePopup = noop,
+        } = this.props;
+        actionDecorator(popupType)(closeActivePopup());
     }
 
     render() {
-        const {component: Inner, modal: Dialog, popup: {sequence}, name, className, type, ...modalProps} = this.props;
+        const {
+            component: Inner,
+            modal: Dialog,
+            name,
+            className,
+            type,
+            popupType = EReduxPopupType.POPUP,
+            ...modalProps,
+        } = this.props;
+        const store: IReduxPopupStore = this.props[popupType] || {} as IReduxPopupStore;
+        const {sequence = []} = store;
         const active = sequence[sequence.length - 1];
         const dialogData = sequence.filter(dialog => dialog.name === name)[0];
         const data = dialogData ? dialogData.data : {};
@@ -34,7 +59,7 @@ class ReduxPopup extends Component<IReduxPopupProps, void> {
         return (
             <Dialog
                 active={active && (active.name === name) || false}
-                onClose={() => this.onClose()}
+                onClose={this.onClose}
                 className={className}
                 type={type}
                 {...modalProps}
@@ -45,8 +70,19 @@ class ReduxPopup extends Component<IReduxPopupProps, void> {
     }
 }
 
-const mapStateToProps = ({popup}) => {
-    return { popup };
+const mapStateToProps = (state: any) => {
+    const storeKeys = Object.values(EReduxPopupType); 
+
+    return Object.keys(state).reduce((acc: any, cur) => {
+        if (storeKeys.includes(cur)) {
+            acc[cur] = state[cur];
+        }
+        return acc;
+    }, {});
 };
 
-export default connect<any, any, IOwnPeduxPopupProps>(mapStateToProps, { registerPopup, closeActivePopup })(ReduxPopup);
+export default connect<
+    IReduxPopupStateProps,
+    IReduxPopupDispatchProps,
+    IReduxPopupOwnProps
+>(mapStateToProps, { registerPopup, closeActivePopup })(ReduxPopup);
