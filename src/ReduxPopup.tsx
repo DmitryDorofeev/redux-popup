@@ -1,27 +1,25 @@
 import React, {Component, ComponentClass} from 'react';
 import {connect} from 'react-redux';
-import {registerPopup, closeActivePopup, PopupName, actionDecorator} from './actions';
-import {IReduxPopupStore, EReduxPopupType} from './reducer';
+import {closeActivePopup, PopupName, actionDecorator} from './actions';
+import {IReduxPopupStore, DEFAULT_POPUP_TYPE} from './reducer';
 
 export interface IReduxPopupOwnProps {
     name: PopupName;
     component: ComponentClass<any>;
     data: any;
-    shouldCloseOnOverlayClick?: boolean;
     className?: string;
     type?: string;
     modal: ComponentClass<any>;
-    popupType?: EReduxPopupType;
+    popupType?: string;
     [key: string]: any;
 }
 
 type IReduxPopupStateProps = {
-    [key in EReduxPopupType]: IReduxPopupStore;
+    [key: string]: IReduxPopupStore;
 }
 
 interface IReduxPopupDispatchProps {
     closeActivePopup();
-    registerPopup(name: PopupName);
 }
 
 interface IReduxPopupProps extends IReduxPopupOwnProps,
@@ -34,7 +32,7 @@ class ReduxPopup extends Component<IReduxPopupProps, null> {
 
     onClose() {
         const {
-            popupType = EReduxPopupType.POPUP,
+            popupType = DEFAULT_POPUP_TYPE,
             closeActivePopup = noop,
         } = this.props;
         actionDecorator(popupType)(closeActivePopup());
@@ -47,7 +45,7 @@ class ReduxPopup extends Component<IReduxPopupProps, null> {
             name,
             className,
             type,
-            popupType = EReduxPopupType.POPUP,
+            popupType = DEFAULT_POPUP_TYPE,
             ...modalProps,
         } = this.props;
         const store: IReduxPopupStore = this.props[popupType] || {} as IReduxPopupStore;
@@ -70,19 +68,14 @@ class ReduxPopup extends Component<IReduxPopupProps, null> {
     }
 }
 
-const mapStateToProps = (state: any) => {
-    const storeKeys = Object.values(EReduxPopupType); 
-
-    return Object.keys(state).reduce((acc: any, cur) => {
-        if (storeKeys.includes(cur)) {
-            acc[cur] = state[cur];
-        }
-        return acc;
-    }, {});
+const mapStateToProps = (state: any, {popupType = DEFAULT_POPUP_TYPE}) => {
+    return {
+        [popupType]: state[popupType],
+    };
 };
 
 export default connect<
     IReduxPopupStateProps,
     IReduxPopupDispatchProps,
     IReduxPopupOwnProps
->(mapStateToProps, { registerPopup, closeActivePopup })(ReduxPopup);
+>(mapStateToProps, {closeActivePopup})(ReduxPopup);

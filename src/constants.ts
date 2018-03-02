@@ -1,5 +1,3 @@
-import {EReduxPopupType} from './reducer';
-
 export enum EReduxPopup {
     REGISTER_POPUP = '@redux-popup/REGISTER',
     OPEN_POPUP = '@redux-popup/OPEN',
@@ -7,6 +5,6 @@ export enum EReduxPopup {
     CLOSE_ALL_POPUPS = '@redux-popup/CLOSE_ALL',
 }
 
-export function getPopupConstant(type: EReduxPopupType, constant: EReduxPopup): string {
+export function getPopupConstant(type: string, constant: EReduxPopup): string {
     return `${type}_${constant}`;
 }

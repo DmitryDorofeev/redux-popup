@@ -3,14 +3,13 @@ declare module 'redux-popup' {
 
     export interface IReduxPopupOwnProps {
         name: PopupName;
-        component: React.ComponentClass<any> | React.StatelessComponent<any>;
+        component: React.ComponentClass<any>;
         data?: any;
-        shouldCloseOnOverlayClick?: boolean;
         className?: string;
         overlayClassName?: string;
         type?: string;
         modal: React.ComponentClass<any>;
-        popupType?: EReduxPopupType;
+        popupType?: string;
         [key: string]: any;
     }
 
@@ -29,7 +28,7 @@ declare module 'redux-popup' {
 
     export function closeAllPopups();
 
-    export function actionDecorator(type: EReduxPopupType);
+    export function actionDecorator(type: string);
 
     export enum EReduxPopup {
         REGISTER_POPUP = '@redux-popup/REGISTER',
@@ -38,18 +37,24 @@ declare module 'redux-popup' {
         CLOSE_ALL_POPUPS = '@redux-popup/CLOSE_ALL',
     }
 
-    export function getPopupConstant(type: EReduxPopupType, constant: EReduxPopup): string;
-
-    export enum EReduxPopupType {
-        POPUP = 'popup',
-        TOAST = 'toast',
-    }
+    export function getPopupConstant(type: string, constant: EReduxPopup): string;
 
     export function popupReducer(state: any, action: any);
 
-    export function makePopupReducer(type: EReduxPopupType);
+    export function makePopupReducer(type: string);
 
     export const ReduxPopup: React.ComponentClass<IReduxPopupOwnProps>;
 
-    export function createReduxPopup(name: PopupName, data: any): (component: React.ComponentClass<IReduxPopupOwnProps>) => React.ComponentClass<IReduxPopupOwnProps>
+    export interface ICreateParams {
+      name: PopupName;
+      modal: React.ComponentClass<any>;
+      modalProps?: any;
+      data?: any;
+      popupType?: string;
+      [key: string]: any;
+  }
+
+    export function createReduxPopup(
+      params: ICreateParams,
+    ): (component: React.ComponentClass<IReduxPopupOwnProps>) => React.ComponentClass<IReduxPopupOwnProps>
 }

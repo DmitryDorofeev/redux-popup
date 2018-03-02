@@ -2,16 +2,13 @@ import {EReduxPopup, getPopupConstant} from './constants';
 import {combineReducers} from 'redux';
 import {Action} from './actions';
 
-export enum EReduxPopupType {
-    POPUP = 'popup',
-    TOAST = 'toast',
-}
+export const DEFAULT_POPUP_TYPE = 'popup';
 
 export interface IReduxPopupStore {
     sequence: any[];
 }
 
-export function makePopupReducer(type: EReduxPopupType) {
+export function makePopupReducer(type: string) {
     const sequence = (state: any[] = [], action: Action<any>) => {
         switch (action.type) {
             case getPopupConstant(type, EReduxPopup.OPEN_POPUP):
