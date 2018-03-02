@@ -14,7 +14,6 @@ import {
 } from './constants';
 import {
     actionDecorator,
-    registerPopup,
     openPopup,
     closeActivePopup,
     closeAllPopups,
@@ -39,7 +38,6 @@ export {
     getPopupConstant,
 
     actionDecorator,
-    registerPopup,
     openPopup,
     closeActivePopup,
     closeAllPopups,

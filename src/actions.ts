@@ -42,11 +42,3 @@ export function closeAllPopups(): Action<void> {
         type: EReduxPopup.CLOSE_ALL_POPUPS,
     }
 }
-
-
-export function registerPopup(name: PopupName): Action<PopupName> {
-    return {
-        type: EReduxPopup.REGISTER_POPUP,
-        payload: name,
-    }
-}
