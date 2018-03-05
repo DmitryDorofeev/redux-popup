@@ -1,15 +1,15 @@
 declare module 'redux-popup' {
     type PopupName = string | number;
 
-    export interface IOwnPeduxPopupProps {
+    export interface IReduxPopupOwnProps {
         name: PopupName;
-        component: React.ComponentClass<any> | React.StatelessComponent<any>;
+        component: React.ComponentClass<any>;
         data?: any;
-        shouldCloseOnOverlayClick?: boolean;
         className?: string;
         overlayClassName?: string;
         type?: string;
         modal: React.ComponentClass<any>;
+        popupType?: string;
         [key: string]: any;
     }
 
@@ -19,7 +19,6 @@ declare module 'redux-popup' {
     }
 
     export interface IReduxPopupStore {
-        popups: Array<PopupName>;
         sequence: Array<IReduxPopupItem>;
     }
 
@@ -29,13 +28,32 @@ declare module 'redux-popup' {
 
     export function closeAllPopups();
 
-    export const OPEN_POPUP: string;
-    export const CLOSE_POPUP: string;
-    export const CLOSE_ALL_POPUPS: string;
+    export function actionDecorator(type: string);
 
-    export function popupReducer(state: any, action: any)
+    export enum EReduxPopup {
+        OPEN_POPUP = '@redux-popup/OPEN',
+        CLOSE_POPUP = '@redux-popup/CLOSE',
+        CLOSE_ALL_POPUPS = '@redux-popup/CLOSE_ALL',
+    }
 
-    export const ReduxPopup: React.ComponentClass<IOwnPeduxPopupProps>;
+    export function getPopupConstant(type: string, constant: EReduxPopup): string;
 
-    export function createReduxPopup(name: PopupName, data: any): (component: React.ComponentClass<IOwnPeduxPopupProps>) => React.ComponentClass<IOwnPeduxPopupProps>
+    export function popupReducer(state: any, action: any);
+
+    export function makePopupReducer(type: string);
+
+    export const ReduxPopup: React.ComponentClass<IReduxPopupOwnProps>;
+
+    export interface ICreateParams {
+      name: PopupName;
+      modal: React.ComponentClass<any>;
+      modalProps?: any;
+      data?: any;
+      popupType?: string;
+      [key: string]: any;
+  }
+
+    export function createReduxPopup(
+      params: ICreateParams,
+    ): (component: React.ComponentClass<IReduxPopupOwnProps>) => React.ComponentClass<IReduxPopupOwnProps>
 }

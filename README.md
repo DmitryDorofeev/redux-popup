@@ -26,7 +26,7 @@ class Popup extends Component {
 class OtherComponentOrContainer extends Component {
     render() {
             return (
-                <ReduxPopup name="test" component={Popup}/>
+                <ReduxPopup name="test" component={Popup} popupType="storeKey"/>
             )
         }
 }
@@ -50,5 +50,35 @@ class Popup extends Component {
     
 }
 
-export default createReduxPopup('test', {})(Popup);
+export default createReduxPopup({
+    name: 'test',
+    modal: Dialog,
+    popupType: 'storeKey',
+})(Popup);
 ```
+
+## Configuring everything
+
+`popupType` property defines store (reducer) key
+default value is `'popup'`
+```js
+    <ReduxPopup name="test" component={Popup} popupType="storeKey"/>
+```
+
+to attach reducer use `makePopupReducer`
+```js
+    import {combineReducers} from 'redux';
+    import {makePopupReducer} from 'redux-popup';
+
+    export default combineReducers({
+        storeKey: makePopupReducer('storeKey'),
+    });
+```
+
+to dispatch actions use `actionDecorator`
+```js
+    import {closeAllPopups, actionDecorator} from 'redux-popup';
+
+    store.dispatch(actionDecorator('storeKey')(closeAllPopups());
+```
+

@@ -23,26 +23,25 @@
   "types": "index.d.ts",
   "homepage": "https://github.com/DmitryDorofeev/redux-popup#readme",
   "devDependencies": {
-    "@types/node": "^6.0.51",
-    "@types/react": "^0.14.50",
-    "@types/react-redux": "^4.4.33",
-    "@types/redux": "^3.6.31",
-    "awesome-typescript-loader": "^2.2.4",
-    "css-loader": "^0.26.0",
-    "json-loader": "^0.5.4",
-    "node-sass": "^3.13.0",
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
-    "redux": "^3.6.0",
-    "sass-loader": "^4.0.2",
-    "style-loader": "^0.13.1",
-    "ts-loader": "^1.2.2",
-    "typescript": "2.2.1",
-    "webpack": "2.2.1"
+    "@types/node": "9.4.6",
+    "@types/react": "16.0.38",
+    "@types/react-redux": "5.0.15",
+    "awesome-typescript-loader": "3.4.1",
+    "css-loader": "0.28.10",
+    "json-loader": "0.5.7",
+    "node-sass": "4.7.2",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "redux": "3.7.2",
+    "sass-loader": "6.0.6",
+    "style-loader": "0.20.2",
+    "ts-loader": "3.5.0",
+    "typescript": "2.7.2",
+    "webpack": "3.11.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.16.0",
-    "immutability-helper": "^2.0.0",
-    "react-redux": "^4.4.6"
+    "babel-polyfill": "6.26.0",
+    "immutability-helper": "2.6.5",
+    "react-redux": "5.0.7"
   }
 }

@@ -4,7 +4,7 @@
       "node_modules/@types",
       "typings"
     ],
-    "target": "es5",
+    "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -13,7 +13,11 @@
     "jsx": "react",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "lib": [ "dom", "es6", "dom.iterable" ,"scripthost", "es2017" ],
+    "pretty": true
   },
   "exclude": [
     "node_modules",

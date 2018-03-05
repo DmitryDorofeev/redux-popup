@@ -1,23 +1,28 @@
-import {OPEN_POPUP, CLOSE_POPUP, REGISTER_POPUP, CLOSE_ALL_POPUPS} from "./constants";
-import {combineReducers, Reducer, Action} from "redux";
+import {EReduxPopup, getPopupConstant} from './constants';
+import {combineReducers} from 'redux';
+import {Action} from './actions';
 
-export interface IReducer {
+export const DEFAULT_POPUP_TYPE = 'popup';
+
+export interface IReduxPopupStore {
     sequence: any[];
 }
 
-const sequence: Reducer<any[]> = (state: any[] = [], action: any) => {
-    switch (action.type) {
-        case OPEN_POPUP:
-            return [...state, action.payload];
-        case CLOSE_POPUP:
-            return state.slice(0, -1);
-        case CLOSE_ALL_POPUPS:
-            return [];
-        default:
-            return state;
-    }
-};
+export function makePopupReducer(type: string) {
+    const sequence = (state: any[] = [], action: Action<any>) => {
+        switch (action.type) {
+            case getPopupConstant(type, EReduxPopup.OPEN_POPUP):
+                return [...state, action.payload];
+            case getPopupConstant(type, EReduxPopup.CLOSE_POPUP):
+                return state.slice(0, -1);
+            case getPopupConstant(type, EReduxPopup.CLOSE_ALL_POPUPS):
+                return [];
+            default:
+                return state;
+        }
+    };
 
-export default combineReducers<IReducer>({
-    sequence,
-});
+    return combineReducers<IReduxPopupStore>({
+        sequence,
+    });
+}
