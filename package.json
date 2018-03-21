@@ -18,8 +18,7 @@
     "url": "https://github.com/DmitryDorofeev/redux-popup/issues"
   },
   "files": [
-    "lib",
-    "index.d.ts"
+    "lib"
   ],
   "types": "./index.d.ts",
   "homepage": "https://github.com/DmitryDorofeev/redux-popup#readme",
