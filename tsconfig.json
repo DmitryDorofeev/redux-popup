@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
-    "typeRoots": [
-      "node_modules/@types",
-      "typings"
-    ],
+    "declaration": true,
     "target": "es5",
     "module": "es2015",
     "moduleResolution": "node",
@@ -17,7 +14,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "lib": [ "dom", "es6", "dom.iterable" ,"scripthost", "es2017" ],
-    "pretty": true
+    "pretty": true,
+    "outDir": "."
   },
   "exclude": [
     "node_modules",

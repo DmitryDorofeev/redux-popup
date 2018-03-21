@@ -1,4 +1,4 @@
-import ReduxPopupComponent from './ReduxPopup';
+import ReduxPopup from './ReduxPopup';
 import {
     createReduxPopup,
     ICreateParams,
@@ -21,8 +21,6 @@ import {
     PopupName,
     IOpenPopupActionPayload,
 } from './actions';
-
-const ReduxPopup = ReduxPopupComponent;
 
 export {
     ReduxPopup,
