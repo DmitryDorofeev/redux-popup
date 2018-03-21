@@ -14,15 +14,15 @@ export interface IReduxPopupOwnProps {
     [key: string]: any;
 }
 
-type IReduxPopupStateProps = {
+export type IReduxPopupStateProps = {
     [key: string]: IReduxPopupStore;
 }
 
-interface IReduxPopupDispatchProps {
+export interface IReduxPopupDispatchProps {
     closeActivePopup();
 }
 
-interface IReduxPopupProps extends IReduxPopupOwnProps,
+export interface IReduxPopupProps extends IReduxPopupOwnProps,
     IReduxPopupStateProps, IReduxPopupDispatchProps {
 }
 
