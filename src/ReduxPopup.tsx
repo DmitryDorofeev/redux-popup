@@ -6,7 +6,7 @@ import {IReduxPopupStore, DEFAULT_POPUP_TYPE} from './reducer';
 export interface IReduxPopupOwnProps {
     name: PopupName;
     component: ComponentClass<any>;
-    data: any;
+    data?: any;
     className?: string;
     type?: string;
     modal: ComponentClass<any>;

@@ -6,7 +6,6 @@ declare module 'redux-popup' {
         component: React.ComponentClass<any>;
         data?: any;
         className?: string;
-        overlayClassName?: string;
         type?: string;
         modal: React.ComponentClass<any>;
         popupType?: string;
