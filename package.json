@@ -18,9 +18,10 @@
     "url": "https://github.com/DmitryDorofeev/redux-popup/issues"
   },
   "files": [
-    "lib"
+    "lib",
+    "index.d.ts"
   ],
-  "types": "index.d.ts",
+  "types": "./index.d.ts",
   "homepage": "https://github.com/DmitryDorofeev/redux-popup#readme",
   "devDependencies": {
     "@types/node": "9.4.6",
