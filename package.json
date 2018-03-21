@@ -1,9 +1,10 @@
 {
   "name": "redux-popup",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
+    "prepublish": "npm run build",
     "clean": "rm -rf lib",
     "build": "NODE_ENV=production webpack --colors --display-error-details --config ./webpack.config.js"
   },
@@ -20,7 +21,7 @@
   "files": [
     "lib"
   ],
-  "types": "./index.d.ts",
+  "types": "lib",
   "homepage": "https://github.com/DmitryDorofeev/redux-popup#readme",
   "devDependencies": {
     "@types/node": "9.4.6",
