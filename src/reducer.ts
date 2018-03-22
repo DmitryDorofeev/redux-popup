@@ -8,7 +8,7 @@ export interface IReduxPopupStore {
     sequence: any[];
 }
 
-export function makePopupReducer(type: string): Reducer<IReduxPopupStore> {
+export function makePopupReducer(type: string = DEFAULT_POPUP_TYPE): Reducer<IReduxPopupStore> {
     const sequence = (state: any[] = [], action: Action<any>) => {
         switch (action.type) {
             case getPopupConstant(type, EReduxPopup.OPEN_POPUP):

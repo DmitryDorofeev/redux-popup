@@ -1,15 +1,15 @@
-import React, {Component, ComponentClass} from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {closeActivePopup, PopupName, actionDecorator} from './actions';
 import {IReduxPopupStore, DEFAULT_POPUP_TYPE} from './reducer';
 
 export interface IReduxPopupOwnProps {
     name: PopupName;
-    component: ComponentClass<any>;
+    component: React.ComponentClass<any>;
     data?: any;
     className?: string;
     type?: string;
-    modal: ComponentClass<any>;
+    modal: React.ComponentClass<any>;
     popupType?: string;
     [key: string]: any;
 }
@@ -28,7 +28,7 @@ export interface IReduxPopupProps extends IReduxPopupOwnProps,
 
 const noop = () => null;
 
-class ReduxPopup extends Component<IReduxPopupProps, null> {
+class ReduxPopup extends React.Component<IReduxPopupProps, null> {
 
     onClose() {
         const {
