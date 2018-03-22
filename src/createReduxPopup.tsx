@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReduxPopup from './ReduxPopup';
 import {PopupName} from './actions';
-import {DEFAULT_POPUP_TYPE} from './reducer';
+import {DEFAULT_POPUP_TYPE} from './constants';
 
 export interface ICreateParams {
     name: PopupName;

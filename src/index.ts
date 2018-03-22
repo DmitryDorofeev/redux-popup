@@ -6,11 +6,11 @@ import {
 import {
     IReduxPopupStore,
     makePopupReducer,
-    DEFAULT_POPUP_TYPE,
 } from './reducer';
 import {
     EReduxPopup,
     getPopupConstant,
+    DEFAULT_POPUP_TYPE,
 } from './constants';
 import {
     actionDecorator,
