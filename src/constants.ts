@@ -6,6 +6,6 @@ export enum EReduxPopup {
 
 export const DEFAULT_POPUP_TYPE = 'popup';
 
-export function getPopupConstant(type: string = DEFAULT_POPUP_TYPE, constant: EReduxPopup): string {
+export function getPopupConstant(type: string, constant: EReduxPopup): string {
     return `${type}_${constant}`;
 }
