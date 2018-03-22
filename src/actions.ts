@@ -12,7 +12,7 @@ export interface IOpenPopupActionPayload {
     data: any;
 }
 
-export function actionDecorator(type: string) {
+export function actionDecorator(type?: string) {
     return function (action: Action<any>) {
         return {
             ...action,

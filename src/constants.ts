@@ -4,6 +4,8 @@ export enum EReduxPopup {
     CLOSE_ALL_POPUPS = '@redux-popup/CLOSE_ALL',
 }
 
-export function getPopupConstant(type: string, constant: EReduxPopup): string {
+export const DEFAULT_POPUP_TYPE = 'popup';
+
+export function getPopupConstant(type: string = DEFAULT_POPUP_TYPE, constant: EReduxPopup): string {
     return `${type}_${constant}`;
 }

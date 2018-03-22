@@ -3,3 +3,4 @@ npm-debug.log
 .idea
 examples/simple/dist/
 lib/
+yarn-error.log
