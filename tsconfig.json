@@ -10,7 +10,6 @@
     "jsx": "react",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "lib": [ "dom", "es6", "dom.iterable" ,"scripthost", "es2017" ],
