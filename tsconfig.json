@@ -14,7 +14,7 @@
     "noUnusedParameters": false,
     "lib": [ "dom", "es6", "dom.iterable" ,"scripthost", "es2017" ],
     "pretty": true,
-    "outDir": "."
+    "declarationDir": "."
   },
   "exclude": [
     "node_modules",

@@ -1,4 +1,4 @@
-import {EReduxPopup, getPopupConstant} from './constants';
+import {EReduxPopup, getPopupConstant, DEFAULT_POPUP_TYPE} from './constants';
 
 export interface Action<T> {
     type: EReduxPopup | string;
@@ -12,7 +12,7 @@ export interface IOpenPopupActionPayload {
     data: any;
 }
 
-export function actionDecorator(type: string) {
+export function actionDecorator(type: string = DEFAULT_POPUP_TYPE) {
     return function (action: Action<any>) {
         return {
             ...action,

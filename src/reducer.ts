@@ -1,8 +1,6 @@
-import {EReduxPopup, getPopupConstant} from './constants';
+import {EReduxPopup, getPopupConstant, DEFAULT_POPUP_TYPE} from './constants';
 import {combineReducers, Reducer} from 'redux';
 import {Action} from './actions';
-
-export const DEFAULT_POPUP_TYPE = 'popup';
 
 export interface IReduxPopupStore {
     sequence: any[];
