@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {closeActivePopup, PopupName, actionDecorator} from './actions';
 import {IReduxPopupStore} from './reducer';
-import { DEFAULT_POPUP_TYPE } from './constants';
+import {DEFAULT_POPUP_TYPE} from './constants';
 
 export interface IReduxPopupOwnProps {
     name: PopupName;
@@ -79,4 +79,4 @@ export default connect<
     IReduxPopupStateProps,
     IReduxPopupDispatchProps,
     IReduxPopupOwnProps
->(mapStateToProps, {closeActivePopup})(ReduxPopup);
+>(mapStateToProps, {closeActivePopup})(ReduxPopup) as React.ComponentType<IReduxPopupOwnProps>;
