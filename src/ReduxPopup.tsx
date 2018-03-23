@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {closeActivePopup, PopupName, actionDecorator} from './actions';
+import {closeActivePopup, PopupName, actionDecorator, Action} from './actions';
 import {IReduxPopupStore} from './reducer';
 import {DEFAULT_POPUP_TYPE} from './constants';
+import {bindActionCreators} from 'redux';
 
 export interface IReduxPopupOwnProps {
     name: PopupName;
@@ -20,7 +21,7 @@ export type IReduxPopupStateProps = {
 }
 
 export interface IReduxPopupDispatchProps {
-    closeActivePopup();
+    popupAction(action: Action<any>);
 }
 
 export interface IReduxPopupProps extends IReduxPopupOwnProps,
@@ -33,10 +34,9 @@ class ReduxPopup extends React.Component<IReduxPopupProps, null> {
 
     private onClose = (): void => {
         const {
-            popupType = DEFAULT_POPUP_TYPE,
-            closeActivePopup = noop,
+            popupAction = noop,
         } = this.props;
-        actionDecorator(popupType)(closeActivePopup());
+        popupAction(closeActivePopup());
     }
 
     public render() {
@@ -69,14 +69,20 @@ class ReduxPopup extends React.Component<IReduxPopupProps, null> {
     }
 }
 
-const mapStateToProps = (state: any, {popupType = DEFAULT_POPUP_TYPE}) => {
+const mapStateToProps = (state: any, {popupType = DEFAULT_POPUP_TYPE}: IReduxPopupOwnProps) => {
     return {
         [popupType]: state[popupType],
     };
 };
 
+const mapDispatchToProps = (dispatch, {popupType = DEFAULT_POPUP_TYPE}: IReduxPopupOwnProps) => {
+    return {
+        popupAction: bindActionCreators(actionDecorator(popupType), dispatch),
+    }
+}
+
 export default connect<
     IReduxPopupStateProps,
     IReduxPopupDispatchProps,
     IReduxPopupOwnProps
->(mapStateToProps, {closeActivePopup})(ReduxPopup) as React.ComponentType<IReduxPopupOwnProps>;
+>(mapStateToProps, mapDispatchToProps)(ReduxPopup) as React.ComponentType<IReduxPopupOwnProps>;
