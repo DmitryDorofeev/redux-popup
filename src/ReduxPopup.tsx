@@ -31,7 +31,7 @@ const noop = () => null;
 
 class ReduxPopup extends React.Component<IReduxPopupProps, null> {
 
-    onClose() {
+    private onClose = (): void => {
         const {
             popupType = DEFAULT_POPUP_TYPE,
             closeActivePopup = noop,
@@ -39,7 +39,7 @@ class ReduxPopup extends React.Component<IReduxPopupProps, null> {
         actionDecorator(popupType)(closeActivePopup());
     }
 
-    render() {
+    public render() {
         const {
             component: Inner,
             modal: Dialog,
