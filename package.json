@@ -32,16 +32,16 @@
     "node-sass": "4.7.2",
     "react": "16.2.0",
     "react-dom": "16.2.0",
+    "react-redux": "6.0.0",
     "redux": "3.7.2",
     "sass-loader": "6.0.6",
     "style-loader": "0.20.2",
     "ts-loader": "3.5.0",
-    "typescript": "2.7.2",
+    "typescript": "3.5.1",
     "webpack": "3.11.0"
   },
   "dependencies": {
     "babel-polyfill": "6.26.0",
-    "immutability-helper": "2.6.5",
-    "react-redux": "5.0.7"
+    "immutability-helper": "2.6.5"
   }
 }
