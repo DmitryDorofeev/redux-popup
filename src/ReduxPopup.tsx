@@ -7,11 +7,11 @@ import {bindActionCreators} from 'redux';
 
 export interface IReduxPopupOwnProps {
     name: PopupName;
-    component: React.ComponentClass<any>;
+    component: React.ComponentType<any>;
     data?: any;
     className?: string;
     type?: string;
-    modal: React.ComponentClass<any>;
+    modal: React.ComponentType<any>;
     popupType?: string;
     [key: string]: any;
 }
