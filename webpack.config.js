@@ -24,6 +24,20 @@ module.exports = {
             commonjs: 'react-dom',
             amd: 'react-dom'
         }
+    }, {
+        'react-redux': {
+            root: 'react-redux',
+            commonjs2: 'react-redux',
+            commonjs: 'react-redux',
+            amd: 'react-redux'
+        }
+    }, {
+        'redux': {
+            root: 'redux',
+            commonjs2: 'redux',
+            commonjs: 'redux',
+            amd: 'redux'
+        }
     }],
     module: {
         rules: [

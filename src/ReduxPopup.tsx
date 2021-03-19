@@ -47,7 +47,7 @@ class ReduxPopup extends React.Component<IReduxPopupProps, null> {
             className,
             type,
             popupType = DEFAULT_POPUP_TYPE,
-            ...modalProps,
+            ...modalProps
         } = this.props;
         const store: IReduxPopupStore = this.props[popupType] || {} as IReduxPopupStore;
         const {sequence = []} = store;
