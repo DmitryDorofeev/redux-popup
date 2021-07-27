@@ -11,10 +11,14 @@ export function makePopupReducer(type: string = DEFAULT_POPUP_TYPE): Reducer<IRe
         switch (action.type) {
             case getPopupConstant(type, EReduxPopup.OPEN_POPUP):
                 return [...state, action.payload];
-            case getPopupConstant(type, EReduxPopup.CLOSE_POPUP):
+            case getPopupConstant(type, EReduxPopup.CLOSE_ACTIVE_POPUP):
                 return state.slice(0, -1);
             case getPopupConstant(type, EReduxPopup.CLOSE_ALL_POPUPS):
                 return [];
+            case getPopupConstant(type, EReduxPopup.CLOSE_POPUP): {
+                const { name } = action.payload;
+                return state.filter(popup => popup && popup.name !== name);
+            }
             default:
                 return state;
         }

@@ -12,6 +12,10 @@ export interface IOpenPopupActionPayload {
     data: any;
 }
 
+export interface IClosePopupActionPayload {
+    name: PopupName;
+}
+
 export function actionDecorator(type: string = DEFAULT_POPUP_TYPE) {
     return function (action: Action<any>) {
         return {
@@ -33,12 +37,21 @@ export function openPopup(name: PopupName, data): Action<IOpenPopupActionPayload
 
 export function closeActivePopup(): Action<void> {
     return {
-        type: EReduxPopup.CLOSE_POPUP,
+        type: EReduxPopup.CLOSE_ACTIVE_POPUP,
     }
 }
 
 export function closeAllPopups(): Action<void> {
     return {
         type: EReduxPopup.CLOSE_ALL_POPUPS,
+    }
+}
+
+export function closePopup(name: PopupName): Action<IClosePopupActionPayload> {
+    return {
+        type: EReduxPopup.CLOSE_POPUP,
+        payload: {
+            name,
+        }
     }
 }

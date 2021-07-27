@@ -1,7 +1,8 @@
 export enum EReduxPopup {
     OPEN_POPUP = 'OPEN',
-    CLOSE_POPUP = 'CLOSE',
+    CLOSE_ACTIVE_POPUP = 'CLOSE_ACTIVE_POPUP',
     CLOSE_ALL_POPUPS = 'CLOSE_ALL',
+    CLOSE_POPUP = 'CLOSE',
 }
 
 export const DEFAULT_POPUP_TYPE = 'popup';
