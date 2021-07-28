@@ -15,11 +15,13 @@ import {
 import {
     actionDecorator,
     openPopup,
+    closePopup,
     closeActivePopup,
     closeAllPopups,
     Action,
     PopupName,
     IOpenPopupActionPayload,
+    IClosePopupActionPayload,
 } from './actions';
 
 export {
@@ -37,9 +39,11 @@ export {
 
     actionDecorator,
     openPopup,
+    closePopup,
     closeActivePopup,
     closeAllPopups,
     Action,
     PopupName,
     IOpenPopupActionPayload,
+    IClosePopupActionPayload,
 };
